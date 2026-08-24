@@ -1,0 +1,15 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# 环境变量 / 密钥
+.env
+.env.*
+!.env.example
+
+# Notebook 检查点
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
