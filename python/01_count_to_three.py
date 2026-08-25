@@ -1,6 +1,7 @@
 from os import environ
 
 from anthropic import Anthropic
+from extract import extract_text_from_message
 
 base_url = environ.get("ANTHROPIC_BASE_URL", "http://localhost:11434")
 api_key = environ.get("ANTHROPIC_API_KEY", "ollama")
@@ -18,13 +19,14 @@ def get_completion(prompt: str, system_prompt=""):
             {"role": "user", "content": prompt},
         ],
     )
-    for block in message.content:
-        if block.type == "text":
-            print(block.text)
+    return extract_text_from_message(message)
 
-
-SYSTEM_PROMPT = "Your answer should always be a series of critical thinking questions that further the conversation (do not provide answers to your questions). Do not actually answer the user question."
 
 # Prompt
-PROMPT = "Why is the sky blue?"
-get_completion(PROMPT, SYSTEM_PROMPT)
+PROMPT = "Count To Three"
+
+print(
+    get_completion(
+        PROMPT,
+    )
+)
