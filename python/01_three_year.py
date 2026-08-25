@@ -25,15 +25,14 @@ def get_completion(prompt: str, system_prompt=""):
 
 # Function to grade exercise correctness
 def grade_exercise(text):
-    pattern = re.compile(r"^(?=.*1)(?=.*2)(?=.*3).*$", re.DOTALL)
-    return bool(pattern.match(text))
+    return bool(re.search(r"giggles", text) or re.search(r"soo", text))
 
+
+SYSTEM_PROMPT = "you are a 3 year old child"
 
 # Prompt
-PROMPT = "以数字形式，数到3"
-response = get_completion(
-    PROMPT,
-)
+PROMPT = "How big is the sky?"
+response = get_completion(PROMPT, SYSTEM_PROMPT)
 
 print(response)
 print("\n--------------------------- GRADING ---------------------------")
